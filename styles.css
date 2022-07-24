@@ -1,0 +1,153 @@
+/* ---------------------------- */
+/* Reset                        */
+/* ---------------------------- */
+
+/* Box sizing */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid blue; */
+}
+
+/* Reset Margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  font-weight: 400;
+}
+
+/* set up the body */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  min-height: 100vh;
+}
+
+/* make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make forms easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ------------------- */
+/* Compontents         */
+/* ------------------- */
+
+.search-container {
+  padding: 3em;
+  margin-bottom: 2em;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.form input[type="text"] {
+  width: 10em;
+}
+
+.form input[type="submit"] {
+  /*  */
+}
+
+.weather-container {
+  margin: 0.5em;
+  padding: 1em;
+  border: 1px solid blue;
+}
+
+.weather-description {
+  padding-left: 1em;
+}
+
+h1 {
+  margin-bottom: 0.5em;
+  padding-left: 0.5em;
+}
+
+.temp-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.temperature {
+  font-size: 4rem;
+  padding-left: 0.5em;
+  padding-right: 0.3em;
+}
+
+.temperature span {
+  font-size: 1.5rem;
+  position: absolute;
+  /* top: 1.8em; */
+  /* left: 17.3em; */
+}
+
+.vertical-line {
+  border-left: 3px solid gray;
+  margin-top: 0.5em;
+  height: 5em;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding-right: 2em;
+}
+
+.feels-like {
+  /*  */
+}
+
+.feels-like span {
+  /*  */
+}
+
+.wind {
+  /*  */
+}
+
+.humidity {
+  /*  */
+}
+
+/* Tablets */
+@media only screen and (min-width: 768px) {
+  /*  */
+}
+
+/* laptops */
+@media only screen and (min-width: 1024px) {
+  /*  */
+}
