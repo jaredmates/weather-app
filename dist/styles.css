@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 /* ---------------------------- */
 /* Reset                        */
 /* ---------------------------- */
@@ -9,7 +11,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border: 1px solid blue; */
 }
 
 /* Reset Margins */
@@ -40,6 +41,11 @@ body {
   padding: 0;
   font-size: 1rem;
   min-height: 100vh;
+  background-image: url(./images/sun.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  font-family: "Roboto Slab", serif;
 }
 
 /* make images easier to work with */
@@ -69,7 +75,8 @@ select {
 .form {
   display: flex;
   justify-content: center;
-  gap: 1em;
+  align-items: center;
+  gap: 0.75em;
 }
 
 .form input[type="text"] {
@@ -82,49 +89,48 @@ select {
 
 .weather-container {
   margin-inline: auto;
-  padding: 1em;
-  border: 1px solid blue;
+  padding: 2em 1em;
   max-width: 22em;
 }
 
 .weather-description {
-  padding-left: 1em;
+  font-size: 1rem;
 }
 
 h1 {
-  margin-bottom: 0.5em;
-  padding-left: 0.5em;
+  margin-bottom: 0.3em;
+  font-size: 3rem;
+  font-weight: bold;
 }
 
 .temp-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .temperature {
-  font-size: 4rem;
-  padding-left: 0.5em;
-  padding-right: 0.3em;
+  font-size: 7rem;
+  padding-right: 0.15em;
+  font-weight: bold;
 }
 
 .temperature span {
   font-size: 1.5rem;
   position: absolute;
-  /* top: 1.8em; */
-  /* left: 17.3em; */
+  top: 12.7em;
 }
 
 .vertical-line {
   border-left: 3px solid gray;
-  margin-top: 0.5em;
-  height: 5em;
+  margin-top: 1.2em;
+  height: 6em;
 }
 
 .details-container {
   display: flex;
   flex-direction: column;
   gap: 1em;
-  padding-right: 2em;
 }
 
 .feels-like {
@@ -143,6 +149,77 @@ h1 {
   /*  */
 }
 
+/* -------Search Bar------- */
+
+.input {
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 1.7em;
+  width: 100%;
+  padding: 1em 0.8em;
+  outline: 0;
+  background-color: #f5f5f5;
+}
+
+.input:hover,
+.input:focus {
+  border: 1px solid #009688;
+  background-color: white;
+}
+
+.button {
+  appearance: none;
+  background-color: #fafbfc;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.button:hover {
+  background-color: #f3f4f6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.button:disabled {
+  background-color: #fafbfc;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959da5;
+  cursor: default;
+}
+
+.button:active {
+  background-color: #edeff2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.button:focus {
+  outline: 1px transparent;
+}
+
+/* -----Media Queries----- */
+
 /* Tablets */
 @media only screen and (min-width: 768px) {
   /*  */
@@ -151,12 +228,11 @@ h1 {
   }
 
   .weather-container {
-    margin-left: 10em;
+    margin-left: 6em;
     margin-top: 10em;
   }
-}
 
-/* laptops */
-@media only screen and (min-width: 1024px) {
-  /*  */
+  .temperature span {
+    top: 18em;
+  }
 }

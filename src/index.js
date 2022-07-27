@@ -1,3 +1,10 @@
+const weatherDescription = document.querySelector(".weather-description");
+const city = document.querySelector(".city-name");
+const temperature = document.querySelector(".temperature");
+const feelsLike = document.querySelector(".feels-like");
+const wind = document.querySelector(".wind");
+const humidity = document.querySelector(".humidity");
+
 const submitForm = document.querySelector(".form");
 
 submitForm.addEventListener("submit", (e) => {
@@ -37,7 +44,7 @@ async function getWeatherData(input) {
       { mode: "cors" }
     );
     const weatherData = await response.json();
-    console.log(weatherData);
+    // console.log(weatherData);
     const dataObj = {
       description: weatherData.weather[0].description,
       temp: weatherData.main.temp,
@@ -46,19 +53,30 @@ async function getWeatherData(input) {
       speed: weatherData.wind.speed,
       name: weatherData.name,
     };
-
-    console.log(dataObj);
-    return dataObj;
+    changeUI(dataObj);
+    // console.log(dataObj);
+    // return dataObj;
   } catch (error) {
     console.log(error.message);
   }
 }
 
-// (async () => {
-//   await getWeatherData();
-// })();
+function changeUI(obj) {
+  weatherDescription.textContent = obj.description;
+  city.textContent = obj.name;
+  temperature.textContent = parseInt(obj.temp);
+  feelsLike.textContent = parseInt(obj.feels_like);
+  wind.textContent = obj.speed;
+  humidity.textContent = obj.humidity;
+}
 
 // TODO: default should be san diego weather have this hardcoded in html I think
 
 // TODO: &units=metric
 // TODO: &units=imperial
+
+// const weatherContainer = document.querySelector(".weather-container");
+// const tempContainer = document.querySelector(".temp-container");
+// const detailsContainer = document.querySelector(".details-container");
+// const tempUnit = document.querySelector(".temp-unit");
+// const tempUnitSmall = document.querySelector(".temp-unit-small");
