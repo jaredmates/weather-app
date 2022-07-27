@@ -10,27 +10,24 @@
   <body>
     <!-- Header -->
     <header class="search-container">
-      <!-- TODO: put POST as action? -->
       <form action="" class="form">
         <input class="input" type="text" placeholder="Search City..." />
-        <!-- TODO: maybe change this to an icon from font awesome -->
-        <input class="button" type="submit" value="Submit" />
+        <input class="button" type="submit" value="Search" />
       </form>
     </header>
 
     <!-- Weather Info -->
     <div class="weather-container">
-      <!-- TODO: remove hardcoded elements once get JS set up for DOM manipulation -->
       <div class="weather-description">Weather Description</div>
       <h1 class="city-name">City Name</h1>
       <div class="temp-container">
-        <div class="temperature">75 <span>&#8451</span></div>
+        <div><span class="temperature">75</span><span class="temp-unit">&#8451</span></div>
         <!-- TODO: Farenheight = &#8457 -->
         <div class="vertical-line"></div>
         <div class="details-container">
-          <div class="feels-like">FEELS LIKE: 78<span>&#8457</span></div>
-          <div class="wind">WIND: 9 MPH</div>
-          <div class="humidity">HUMIDITY: 60%</div>
+          <div>FEELS LIKE: <span class="feels-like">75</span><span class="temp-unit-small">&#8457</span></div>
+          <div>WIND: <span class="wind">9</span>MPH</div>
+          <div>HUMIDITY: <span class="humidity">60</span>%</div>
         </div>
       </div>
 
