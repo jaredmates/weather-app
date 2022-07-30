@@ -10,6 +10,11 @@
   <body>
     <!-- Header -->
     <header class="search-container">
+      <div class="switch-container">
+        <input type="checkbox" id="switch" /><label class="switch" for="switch">Toggle</label>
+        <div>&#8451 to &#8457</div>
+      </div>
+
       <form action="" class="form">
         <input class="input" type="text" placeholder="Search City..." />
         <input class="button" type="submit" value="Search" />
@@ -18,16 +23,15 @@
 
     <!-- Weather Info -->
     <div class="weather-container">
-      <div class="weather-description">Weather Description</div>
-      <h1 class="city-name">City Name</h1>
+      <div class="weather-description"></div>
+      <h1 class="city-name"></h1>
       <div class="temp-container">
-        <div><span class="temperature">75</span><span class="temp-unit">&#8451</span></div>
-        <!-- TODO: Farenheight = &#8457 -->
+        <div><span class="temperature"></span><sup class="temp-unit"></sup></div>
         <div class="vertical-line"></div>
         <div class="details-container">
-          <div>FEELS LIKE: <span class="feels-like">75</span><span class="temp-unit-small">&#8457</span></div>
-          <div>WIND: <span class="wind">9</span>MPH</div>
-          <div>HUMIDITY: <span class="humidity">60</span>%</div>
+          <div>FEELS LIKE: <span class="feels-like"></span><sup class="temp-unit-small"></sup></div>
+          <div>WIND: <span class="wind"></span> MPH</div>
+          <div>HUMIDITY: <span class="humidity"></span>%</div>
         </div>
       </div>
 

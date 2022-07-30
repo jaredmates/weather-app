@@ -35,7 +35,6 @@ p {
   font-weight: 400;
 }
 
-/* set up the body */
 body {
   margin: 0;
   padding: 0;
@@ -48,14 +47,12 @@ body {
   font-family: "Roboto Slab", serif;
 }
 
-/* make images easier to work with */
 img,
 picture {
   max-width: 100%;
   display: block;
 }
 
-/* make forms easier to work with */
 input,
 button,
 textarea,
@@ -67,8 +64,15 @@ select {
 /* Compontents         */
 /* ------------------- */
 
+header {
+  display: flex;
+  gap: 2em;
+  flex-direction: column;
+  align-items: center;
+}
+
 .search-container {
-  padding: 3em;
+  padding: 3em 6em;
   margin-bottom: 2em;
 }
 
@@ -83,14 +87,12 @@ select {
   width: 10em;
 }
 
-.form input[type="submit"] {
-  /*  */
-}
-
 .weather-container {
   margin-inline: auto;
   padding: 2em 1em;
   max-width: 22em;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  border-radius: 8px;
 }
 
 .weather-description {
@@ -98,7 +100,6 @@ select {
 }
 
 h1 {
-  margin-bottom: 0.3em;
   font-size: 3rem;
   font-weight: bold;
 }
@@ -111,14 +112,17 @@ h1 {
 
 .temperature {
   font-size: 7rem;
-  padding-right: 0.15em;
   font-weight: bold;
+  line-height: 110px;
 }
 
-.temperature span {
+.temp-unit {
   font-size: 1.5rem;
-  position: absolute;
-  top: 12.7em;
+  vertical-align: top;
+}
+
+.temp-unit-small {
+  font-size: 10px;
 }
 
 .vertical-line {
@@ -131,22 +135,6 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 1em;
-}
-
-.feels-like {
-  /*  */
-}
-
-.feels-like span {
-  /*  */
-}
-
-.wind {
-  /*  */
-}
-
-.humidity {
-  /*  */
 }
 
 /* -------Search Bar------- */
@@ -218,15 +206,50 @@ h1 {
   outline: 1px transparent;
 }
 
+/* --------Toggle Switch-------------- */
+
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 50px;
+  height: 20px;
+  background: grey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+label:after {
+  content: "";
+  position: absolute;
+  top: 2.2px;
+  left: 2.2px;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background: #bada55;
+}
+
+input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
 /* -----Media Queries----- */
 
 /* Tablets */
 @media only screen and (min-width: 768px) {
-  /*  */
-  .form {
-    justify-content: right;
-  }
-
   .weather-container {
     margin-left: 6em;
     margin-top: 10em;
@@ -234,5 +257,10 @@ h1 {
 
   .temperature span {
     top: 18em;
+  }
+
+  header {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
