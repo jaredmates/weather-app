@@ -6,13 +6,30 @@ const wind = document.querySelector(".wind");
 const humidity = document.querySelector(".humidity");
 
 const submitForm = document.querySelector(".form");
+const switchUnit = document.querySelector("#switch");
+const tempUnit = document.querySelector(".temp-unit");
+const tempUnitSmall = document.querySelector(".temp-unit-small");
+
+let weatherUnit = "metric";
 
 submitForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let cityName = document.querySelector(".input");
-  getWeatherData(cityName.value);
+  getWeatherData(cityName.value, weatherUnit);
   cityName.value = "";
 });
+
+switchUnit.addEventListener("click", changeUnit);
+
+async function changeUnit() {
+  if (weatherUnit === "metric") {
+    weatherUnit = "imperial";
+    await getWeatherData(city.textContent, weatherUnit);
+  } else {
+    weatherUnit = "metric";
+    await getWeatherData(city.textContent, weatherUnit);
+  }
+}
 
 async function getCityCoordinates(city) {
   try {
@@ -33,18 +50,17 @@ async function getCityCoordinates(city) {
   }
 }
 
-async function getWeatherData(input) {
+async function getWeatherData(input, unit) {
   try {
     const obj = await getCityCoordinates(input);
     const lat = obj.lat;
     const lon = obj.lon;
 
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=8726a04f59dfd35caedc4c81c1f18e66&units=metric`,
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=8726a04f59dfd35caedc4c81c1f18e66&units=${unit}`,
       { mode: "cors" }
     );
     const weatherData = await response.json();
-    // console.log(weatherData);
     const dataObj = {
       description: weatherData.weather[0].description,
       temp: weatherData.main.temp,
@@ -54,8 +70,6 @@ async function getWeatherData(input) {
       name: weatherData.name,
     };
     changeUI(dataObj);
-    // console.log(dataObj);
-    // return dataObj;
   } catch (error) {
     console.log(error.message);
   }
@@ -68,15 +82,17 @@ function changeUI(obj) {
   feelsLike.textContent = parseInt(obj.feels_like);
   wind.textContent = obj.speed;
   humidity.textContent = obj.humidity;
+
+  if (weatherUnit === "metric") {
+    tempUnit.textContent = "°C";
+    tempUnitSmall.textContent = "°C";
+  } else {
+    tempUnit.textContent = "°F";
+    tempUnitSmall.textContent = "°F";
+  }
 }
 
-// TODO: default should be san diego weather have this hardcoded in html I think
-
-// TODO: &units=metric
-// TODO: &units=imperial
-
-// const weatherContainer = document.querySelector(".weather-container");
-// const tempContainer = document.querySelector(".temp-container");
-// const detailsContainer = document.querySelector(".details-container");
-// const tempUnit = document.querySelector(".temp-unit");
-// const tempUnitSmall = document.querySelector(".temp-unit-small");
+// Start Page will show the weather for San Diego
+(async () => {
+  await getWeatherData("San Diego", weatherUnit);
+})();
